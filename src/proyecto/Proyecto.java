@@ -18,6 +18,7 @@ public class Proyecto {
     public static void main(String[] args) {
         // TODO code application logic here
         //Scanner entrada = new Scanner();
+       // Prueba de GitHub
         login nuevo= new login();
         nuevo.setVisible(true);
     }
