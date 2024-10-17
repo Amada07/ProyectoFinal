@@ -4,6 +4,8 @@
  */
 package interfas;
 
+import gestiondeventas.CRUDdb;
+
 /**
  *
  * @author Amada
@@ -26,6 +28,8 @@ public class EspecificacionesDeProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         especificacionesexistentes = new javax.swing.JLabel();
         cBXlistaespecificacion = new javax.swing.JComboBox<>();
@@ -40,7 +44,23 @@ public class EspecificacionesDeProducto extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 204, 153));
+
+        jPanel1.setBackground(new java.awt.Color(255, 204, 153));
 
         especificacionesexistentes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         especificacionesexistentes.setText("Especificaciones Existentes");
@@ -60,10 +80,23 @@ public class EspecificacionesDeProducto extends javax.swing.JFrame {
             }
         });
 
+        guardarespecificacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         guardarespecificacion.setText("Guardar");
+        guardarespecificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarespecificacionActionPerformed(evt);
+            }
+        });
 
+        salirespecificacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         salirespecificacion.setText("Salir ");
+        salirespecificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirespecificacionActionPerformed(evt);
+            }
+        });
 
+        eliminarespecificacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         eliminarespecificacion.setText("Eliminar Especificacion");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -74,23 +107,24 @@ public class EspecificacionesDeProducto extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(guardarespecificacion)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3)))
-                        .addGap(48, 48, 48)
-                        .addComponent(eliminarespecificacion)
-                        .addGap(28, 28, 28)
-                        .addComponent(salirespecificacion))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(guardarespecificacion)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel3)))
+                                .addGap(48, 48, 48)
+                                .addComponent(eliminarespecificacion)
+                                .addGap(45, 45, 45)
+                                .addComponent(salirespecificacion))
+                            .addComponent(especificacionesexistentes)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addComponent(jLabel2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(especificacionesexistentes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(cBXlistaespecificacion, 0, 217, Short.MAX_VALUE)
                     .addComponent(cBXtipodato, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -114,34 +148,34 @@ public class EspecificacionesDeProducto extends javax.swing.JFrame {
                     .addComponent(cBXtipodato, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardarespecificacion)
                     .addComponent(eliminarespecificacion)
                     .addComponent(salirespecificacion))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 153));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Especificaciones de Producto ");
+        jLabel1.setText("ESPECIFICACIONES DE PRODUCTO");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(82, 82, 82)
                 .addComponent(jLabel1)
-                .addGap(57, 57, 57))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -155,8 +189,8 @@ public class EspecificacionesDeProducto extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -165,6 +199,19 @@ public class EspecificacionesDeProducto extends javax.swing.JFrame {
     private void cBXtipodatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBXtipodatoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cBXtipodatoActionPerformed
+
+    private void salirespecificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirespecificacionActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_salirespecificacionActionPerformed
+
+    private void guardarespecificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarespecificacionActionPerformed
+        // TODO add your handling code here:
+        CRUDdb  escritura = new CRUDdb();
+       boolean estadoEscritura = escritura.escrituraDb("EspecificacionesDeProducto",textonomespecificacion.getText());
+       System.out.println (estadoEscritura);
+        textonomespecificacion.setText("");
+    }//GEN-LAST:event_guardarespecificacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,6 +260,8 @@ public class EspecificacionesDeProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton salirespecificacion;
     private javax.swing.JTextField textonomespecificacion;
     // End of variables declaration//GEN-END:variables

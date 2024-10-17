@@ -122,6 +122,11 @@ public class PanelDeCategorias extends javax.swing.JFrame {
 
         salirgestion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         salirgestion.setText("Salir ");
+        salirgestion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirgestionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -232,6 +237,11 @@ public class PanelDeCategorias extends javax.swing.JFrame {
         Productos productoAlta = new Productos();
         productoAlta.setVisible(true);
     }//GEN-LAST:event_altaproductoActionPerformed
+
+    private void salirgestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirgestionActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_salirgestionActionPerformed
 
     /**
      * @param args the command line arguments

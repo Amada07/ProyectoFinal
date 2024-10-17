@@ -36,6 +36,7 @@ public class login extends javax.swing.JFrame {
         validar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        salirlogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 255));
@@ -43,6 +44,7 @@ public class login extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         usuario.setBackground(new java.awt.Color(255, 204, 204));
+        usuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         usuario.setText("Usuario");
         usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +53,7 @@ public class login extends javax.swing.JFrame {
         });
 
         contraseña.setBackground(new java.awt.Color(255, 204, 204));
+        contraseña.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         contraseña.setText("Contraseña");
         contraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +62,7 @@ public class login extends javax.swing.JFrame {
         });
 
         validar.setBackground(new java.awt.Color(255, 204, 204));
+        validar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         validar.setText("Validar");
         validar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +72,15 @@ public class login extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Amada\\Downloads\\icon.jpeg")); // NOI18N
 
+        salirlogin.setBackground(new java.awt.Color(255, 204, 204));
+        salirlogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        salirlogin.setText("Salir ");
+        salirlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirloginActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -76,9 +89,9 @@ public class login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(contraseña))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(contraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(textocontraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
@@ -90,8 +103,10 @@ public class login extends javax.swing.JFrame {
                         .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(200, 200, 200)
+                .addGap(115, 115, 115)
                 .addComponent(validar)
+                .addGap(71, 71, 71)
+                .addComponent(salirlogin)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -112,9 +127,11 @@ public class login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textocontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(validar)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(validar)
+                    .addComponent(salirlogin))
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,6 +176,11 @@ public class login extends javax.swing.JFrame {
       }
     }//GEN-LAST:event_validarActionPerformed
 
+    private void salirloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirloginActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_salirloginActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -199,6 +221,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton salirlogin;
     private javax.swing.JTextField textocontraseña;
     private javax.swing.JTextField textousuario;
     private javax.swing.JButton usuario;

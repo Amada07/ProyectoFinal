@@ -4,6 +4,8 @@
  */
 package interfas;
 
+import gestiondeventas.CRUDdb;
+
 /**
  *
  * @author Amada
@@ -41,7 +43,7 @@ public class CaracteristicasDeProductos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("CARACTERISTICAS DE PRODUCTOS");
@@ -61,9 +63,19 @@ public class CaracteristicasDeProductos extends javax.swing.JFrame {
 
         guardarcaracter.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         guardarcaracter.setText("Guardar");
+        guardarcaracter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarcaracterActionPerformed(evt);
+            }
+        });
 
         salircaracter.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         salircaracter.setText("Salir ");
+        salircaracter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salircaracterActionPerformed(evt);
+            }
+        });
 
         eliminarcaracter.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         eliminarcaracter.setText("Eliminar caracteristicas");
@@ -73,30 +85,30 @@ public class CaracteristicasDeProductos extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(caracteristica)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombrecaracter)
-                            .addComponent(codigocaracter)
-                            .addComponent(guardarcaracter)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(caracteristica)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textocodigo)
-                            .addComponent(cBXcaracteristicas, 0, 253, Short.MAX_VALUE)
-                            .addComponent(textonombrecarac))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(eliminarcaracter)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                         .addComponent(salircaracter)
-                        .addGap(51, 51, 51))))
+                        .addGap(51, 51, 51))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cBXcaracteristicas, 0, 267, Short.MAX_VALUE)
+                            .addComponent(textocodigo)
+                            .addComponent(textonombrecarac))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(guardarcaracter)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(nombrecaracter)
+                        .addComponent(codigocaracter)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,11 +121,11 @@ public class CaracteristicasDeProductos extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codigocaracter)
                     .addComponent(textocodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(22, 22, 22)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombrecaracter)
                     .addComponent(textonombrecarac, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                .addGap(48, 48, 48)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardarcaracter)
                     .addComponent(salircaracter)
@@ -130,9 +142,9 @@ public class CaracteristicasDeProductos extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(139, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                .addGap(77, 77, 77))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,6 +169,21 @@ public class CaracteristicasDeProductos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void salircaracterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salircaracterActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_salircaracterActionPerformed
+
+    private void guardarcaracterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarcaracterActionPerformed
+        // TODO add your handling code here:
+        //GUARDAR CARACTERISTICA
+        CRUDdb  escritura = new CRUDdb();
+       boolean estadoEscritura = escritura.escrituraDb("CaracteristicasDeProductos",textocodigo.getText()+textonombrecarac.getText());
+       System.out.println (estadoEscritura);
+        textocodigo.setText("");
+        textonombrecarac.setText("");
+    }//GEN-LAST:event_guardarcaracterActionPerformed
 
     /**
      * @param args the command line arguments

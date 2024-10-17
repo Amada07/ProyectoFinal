@@ -90,11 +90,19 @@ public class AsignacionDeCCE extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Valor especificaciones");
 
+        modificar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         modificar.setText("Modificar");
 
+        eliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         eliminar.setText("Eliminar");
 
+        salirasignacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         salirasignacion.setText("Salir ");
+        salirasignacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirasignacionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -156,7 +164,7 @@ public class AsignacionDeCCE extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(valorespecificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(modificar)
                     .addComponent(eliminar)
@@ -177,6 +185,11 @@ public class AsignacionDeCCE extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void salirasignacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirasignacionActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_salirasignacionActionPerformed
 
     /**
      * @param args the command line arguments

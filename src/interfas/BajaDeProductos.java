@@ -71,6 +71,11 @@ public class BajaDeProductos extends javax.swing.JFrame {
 
         salirbaja.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         salirbaja.setText("Salir ");
+        salirbaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirbajaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,7 +83,7 @@ public class BajaDeProductos extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(47, 47, 47)
                 .addComponent(cBXproductos, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,6 +123,11 @@ public class BajaDeProductos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void salirbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirbajaActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_salirbajaActionPerformed
 
     /**
      * @param args the command line arguments

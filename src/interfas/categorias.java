@@ -5,6 +5,12 @@
 package interfas;
 
 import gestiondeventas.CRUDdb;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -74,6 +80,11 @@ public class categorias extends javax.swing.JFrame {
 
         salircate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         salircate.setText("Salir ");
+        salircate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salircateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -90,15 +101,15 @@ public class categorias extends javax.swing.JFrame {
                                     .addComponent(Nombre))
                                 .addGap(90, 90, 90)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textocodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textonombre, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(textonombre, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(textocodigo)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(categorias)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cBXcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(9, 9, 9)))
-                        .addContainerGap(75, Short.MAX_VALUE))
+                                .addComponent(cBXcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(84, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(Guardar)
@@ -173,6 +184,7 @@ public class categorias extends javax.swing.JFrame {
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         // TODO add your handling code here:
+           
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
@@ -181,9 +193,16 @@ public class categorias extends javax.swing.JFrame {
        CRUDdb  escritura = new CRUDdb();
         boolean estadoEscritura = escritura.escrituraDb("categorias",textocodigo.getText()+ textonombre.getText());
         System.out.println (estadoEscritura);
+        //Limpia los campos de texto 
         textocodigo.setText("");
         textonombre.setText("");
+       
     }//GEN-LAST:event_GuardarActionPerformed
+
+    private void salircateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salircateActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_salircateActionPerformed
 
     /**
      * @param args the command line arguments

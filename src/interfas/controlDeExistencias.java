@@ -33,6 +33,7 @@ public class controlDeExistencias extends javax.swing.JFrame {
         alertaStock = new javax.swing.JButton();
         registroSalida = new javax.swing.JButton();
         historialStock = new javax.swing.JButton();
+        salirControl = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,33 +78,48 @@ public class controlDeExistencias extends javax.swing.JFrame {
             }
         });
 
+        salirControl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        salirControl.setText("Salir ");
+        salirControl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirControlActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(92, 92, 92)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(alertaStock, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(registroEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(historialStock)
-                    .addComponent(registroSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(alertaStock, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(registroEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(historialStock)
+                            .addComponent(registroSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(245, 245, 245)
+                        .addComponent(salirControl)))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(registroEntrada)
                 .addGap(18, 18, 18)
                 .addComponent(registroSalida)
                 .addGap(18, 18, 18)
                 .addComponent(alertaStock)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(historialStock)
-                .addGap(49, 49, 49))
+                .addGap(18, 18, 18)
+                .addComponent(salirControl)
+                .addGap(13, 13, 13))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -123,6 +139,11 @@ public class controlDeExistencias extends javax.swing.JFrame {
     private void historialStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialStockActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_historialStockActionPerformed
+
+    private void salirControlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirControlActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_salirControlActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,5 +188,6 @@ public class controlDeExistencias extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton registroEntrada;
     private javax.swing.JButton registroSalida;
+    private javax.swing.JButton salirControl;
     // End of variables declaration//GEN-END:variables
 }

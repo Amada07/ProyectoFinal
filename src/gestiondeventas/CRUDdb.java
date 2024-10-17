@@ -28,17 +28,20 @@ public class CRUDdb {
              try {
                         FileWriter fw = new FileWriter(f, true);
                         BufferedWriter bw = new BufferedWriter(fw);
+                        
                         bw.write(contenido+"\n");
                         bw.close();
                         estadoEscritura= true;
                     } catch (IOException ex) {
                         System.out.println("Error:" +ex);
-                        
+                       
                     }
         
             
             return estadoEscritura;
             
-   }
+  }
 }
+    
 
+    
