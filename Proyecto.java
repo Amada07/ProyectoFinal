@@ -6,7 +6,7 @@ package proyecto;
 import interfas.panel;
 /**
  *
- * @author Dell
+ * @author Amada
  */
 public class Proyecto {
 
