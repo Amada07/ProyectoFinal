@@ -145,7 +145,7 @@ public class principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gestionproductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionproductosActionPerformed
-        // TODO add your handling code here:
+        // Aqui se enlaza panel de categorias con nuestro panel de menu principal 
         PanelDeCategorias catego= new PanelDeCategorias();
         catego.setVisible(true); 
         

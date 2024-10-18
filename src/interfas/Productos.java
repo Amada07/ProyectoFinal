@@ -4,7 +4,13 @@
  */
 package interfas;
 import gestiondeventas.CRUDdb;
-import gestiondeventas.ProductosDb;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -81,6 +87,11 @@ public class Productos extends javax.swing.JFrame {
         });
 
         cBXcategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "Limpieza ", "Electronicos", "Hogar", "Audio" }));
+        cBXcategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cBXcategoriaMouseClicked(evt);
+            }
+        });
         cBXcategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cBXcategoriaActionPerformed(evt);
@@ -242,14 +253,47 @@ public class Productos extends javax.swing.JFrame {
        CRUDdb  escritura = new CRUDdb();
        boolean estadoEscritura = escritura.escrituraDb("Productos",textocodigo.getText()+textonombre.getText()+textocaracteristica.getText()+textoprecio.getText()+textostock.getText()+textodescripcion.getText());
         System.out.println (estadoEscritura);
+        
+        if(estadoEscritura){
+         // Mostrar mensaje de éxito
+        JOptionPane.showMessageDialog(this, "El producto se ha creado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);   
+        
+        //Limpiar los campos despues de guardar 
         textocodigo.setText("");
         textonombre.setText("");
         textocaracteristica.setText("");
         textoprecio.setText("");
         textostock.setText("");
         textodescripcion.setText("");
+     } else {
+        // Mostrar mensaje de error si algo falla
+        JOptionPane.showMessageDialog(this, "Hubo un error al crear el producto.", "Error", JOptionPane.ERROR_MESSAGE);
+        } 
          
     }//GEN-LAST:event_GuardarActionPerformed
+
+    private void cBXcategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cBXcategoriaMouseClicked
+        // TODO add your handling code here:
+        cBXcategoria.removeAllItems();
+        
+        File f =new File ("C:\\Users\\Amada\\OneDrive\\Escritorio\\GitHub\\ProyectoFinal\\Base de datos");
+      try {
+        String lectura = "";
+        FileReader fr = new FileReader(f);
+        BufferedReader br = new  BufferedReader(fr);
+        lectura = br.readLine();
+        while (lectura != null){
+            StringTokenizer st= new StringTokenizer(lectura,",");
+            String catego = st.nextToken();
+            cBXcategoria.addItem(catego); // Actualizamos el ComboBox
+            lectura = br.readLine();
+        }
+        br.close();
+        fr.close();
+      } catch (FileNotFoundException ex) {
+      } catch (IOException ex) {
+    }
+    }//GEN-LAST:event_cBXcategoriaMouseClicked
 
     /**
      * @param args the command line arguments

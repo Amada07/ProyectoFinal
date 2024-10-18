@@ -62,6 +62,11 @@ public class PedidosDeCompra extends javax.swing.JFrame {
 
         creacionPedidos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         creacionPedidos.setText("Creacion de Pedidos de Compra");
+        creacionPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creacionPedidosActionPerformed(evt);
+            }
+        });
 
         gestionPedido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         gestionPedido.setText("Gestion de Pedidos de Compra ");
@@ -84,11 +89,11 @@ public class PedidosDeCompra extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(recepcionPedido)
-                        .addComponent(gestionPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(101, 101, 101)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(recepcionPedido)
+                            .addComponent(gestionPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(creacionPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(151, 151, 151)
@@ -128,6 +133,11 @@ public class PedidosDeCompra extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_salirpedidosActionPerformed
+
+    private void creacionPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creacionPedidosActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_creacionPedidosActionPerformed
 
     /**
      * @param args the command line arguments

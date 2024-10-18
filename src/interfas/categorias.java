@@ -6,13 +6,8 @@ package interfas;
 
 import gestiondeventas.CRUDdb;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 
 
@@ -21,7 +16,25 @@ import javax.swing.JOptionPane;
  * @author Amada
  */
 public class categorias extends javax.swing.JFrame {
+  private void actualizarListaCategorias() {
+    try {
+        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Amada\\OneDrive\\Escritorio\\GitHub\\ProyectoFinal\\Base de datos\\categoriastxt")); 
+        String linea;
 
+        cBXcategoria.removeAllItems(); // Limpiar el JComboBox antes de agregar las categorías
+
+        while ((linea = br.readLine()) != null) {
+            String[] datosCategoria = linea.split(",");
+            cBXcategoria.addItem(datosCategoria[0]); // Asume que el nombre de la categoría está en la segunda posición
+        }
+
+        br.close(); // Cerrar el archivo
+    } catch (IOException ex) {
+        System.out.println("Error al leer las categorías: " + ex.getMessage());
+    }
+
+
+}
     /**
      * Creates new form categorias
      */
@@ -49,7 +62,6 @@ public class categorias extends javax.swing.JFrame {
         categorias = new javax.swing.JLabel();
         cBXcategoria = new javax.swing.JComboBox<>();
         salircate = new javax.swing.JButton();
-        actualizar = new javax.swing.JButton();
         categoria = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,13 +113,6 @@ public class categorias extends javax.swing.JFrame {
             }
         });
 
-        actualizar.setText("actualizar");
-        actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actualizarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -116,28 +121,23 @@ public class categorias extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(categorias)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cBXcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Nombre))
-                                .addGap(90, 90, 90)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textocodigo)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(textonombre, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addContainerGap(84, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(categorias)
+                            .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Nombre))
+                        .addGap(59, 59, 59)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cBXcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(textocodigo)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(textonombre, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, Short.MAX_VALUE))))
+                        .addContainerGap(37, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(Guardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(actualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(eliminar)
                         .addGap(63, 63, 63)
                         .addComponent(salircate)
@@ -162,8 +162,7 @@ public class categorias extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Guardar)
                     .addComponent(salircate)
-                    .addComponent(eliminar)
-                    .addComponent(actualizar))
+                    .addComponent(eliminar))
                 .addGap(75, 75, 75))
         );
 
@@ -224,7 +223,7 @@ public class categorias extends javax.swing.JFrame {
     }
         //guardar  categorias en el archivo 
        CRUDdb  escritura = new CRUDdb();
-        boolean estadoEscritura = escritura.escrituraDb("categorias",textocodigo.getText()+ textonombre.getText());
+        boolean estadoEscritura = escritura.escrituraDb("categorias",textocodigo.getText() + textonombre.getText());
         System.out.println (estadoEscritura);
         
         //Limpia los campos de texto 
@@ -251,13 +250,6 @@ public class categorias extends javax.swing.JFrame {
         // TODO add your handling code here:
     
     }//GEN-LAST:event_cBXcategoriaMouseClicked
-
-    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
-        // TODO add your handling code here:
-  
-
-
-    }//GEN-LAST:event_actualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -297,7 +289,6 @@ public class categorias extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Guardar;
     private javax.swing.JLabel Nombre;
-    private javax.swing.JButton actualizar;
     private javax.swing.JComboBox<String> cBXcategoria;
     private javax.swing.JLabel categoria;
     private javax.swing.JLabel categorias;
