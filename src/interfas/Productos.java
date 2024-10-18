@@ -4,6 +4,7 @@
  */
 package interfas;
 import gestiondeventas.CRUDdb;
+import gestiondeventas.ProductosDb;
 
 /**
  *

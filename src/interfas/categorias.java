@@ -8,9 +8,13 @@ import gestiondeventas.CRUDdb;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -45,6 +49,7 @@ public class categorias extends javax.swing.JFrame {
         categorias = new javax.swing.JLabel();
         cBXcategoria = new javax.swing.JComboBox<>();
         salircate = new javax.swing.JButton();
+        actualizar = new javax.swing.JButton();
         categoria = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,13 +81,30 @@ public class categorias extends javax.swing.JFrame {
         categorias.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         categorias.setText("Categorias existentes ");
 
-        cBXcategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "Limpieza", "Electronicos", "Hogar ", "Audio " }));
+        cBXcategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", " " }));
+        cBXcategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cBXcategoriaMouseClicked(evt);
+            }
+        });
+        cBXcategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cBXcategoriaActionPerformed(evt);
+            }
+        });
 
         salircate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         salircate.setText("Salir ");
         salircate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salircateActionPerformed(evt);
+            }
+        });
+
+        actualizar.setText("actualizar");
+        actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarActionPerformed(evt);
             }
         });
 
@@ -96,28 +118,30 @@ public class categorias extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(categorias)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cBXcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Nombre))
                                 .addGap(90, 90, 90)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textocodigo)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(textonombre, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(textocodigo)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(categorias)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cBXcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addContainerGap(84, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(Guardar)
-                        .addGap(104, 104, 104)
-                        .addComponent(eliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(actualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(eliminar)
+                        .addGap(63, 63, 63)
                         .addComponent(salircate)
-                        .addGap(71, 71, 71))))
+                        .addGap(114, 114, 114))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,8 +161,9 @@ public class categorias extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Guardar)
+                    .addComponent(salircate)
                     .addComponent(eliminar)
-                    .addComponent(salircate))
+                    .addComponent(actualizar))
                 .addGap(75, 75, 75))
         );
 
@@ -183,26 +208,56 @@ public class categorias extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:                                        
+    
+
            
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
         // TODO add your handling code here:
-        //guardar  
+         // Verificar que el nombre de la categoría no esté vacío
+    if (textocodigo.getText().isEmpty() || textonombre.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "El código y nombre de la categoría no pueden estar vacíos");
+        return;
+  
+    }
+        //guardar  categorias en el archivo 
        CRUDdb  escritura = new CRUDdb();
         boolean estadoEscritura = escritura.escrituraDb("categorias",textocodigo.getText()+ textonombre.getText());
         System.out.println (estadoEscritura);
+        
         //Limpia los campos de texto 
         textocodigo.setText("");
         textonombre.setText("");
-       
+        
+  
+      
     }//GEN-LAST:event_GuardarActionPerformed
 
     private void salircateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salircateActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_salircateActionPerformed
+
+    private void cBXcategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBXcategoriaActionPerformed
+        // TODO add your handling code here
+
+      
+      
+    }//GEN-LAST:event_cBXcategoriaActionPerformed
+
+    private void cBXcategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cBXcategoriaMouseClicked
+        // TODO add your handling code here:
+    
+    }//GEN-LAST:event_cBXcategoriaMouseClicked
+
+    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
+        // TODO add your handling code here:
+  
+
+
+    }//GEN-LAST:event_actualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,6 +297,7 @@ public class categorias extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Guardar;
     private javax.swing.JLabel Nombre;
+    private javax.swing.JButton actualizar;
     private javax.swing.JComboBox<String> cBXcategoria;
     private javax.swing.JLabel categoria;
     private javax.swing.JLabel categorias;
