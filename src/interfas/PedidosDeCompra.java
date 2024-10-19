@@ -136,6 +136,8 @@ public class PedidosDeCompra extends javax.swing.JFrame {
 
     private void creacionPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creacionPedidosActionPerformed
         // TODO add your handling code here:
+        creacionPedidosCompra pedido = new creacionPedidosCompra();
+        pedido.setVisible(true);
         
     }//GEN-LAST:event_creacionPedidosActionPerformed
 
